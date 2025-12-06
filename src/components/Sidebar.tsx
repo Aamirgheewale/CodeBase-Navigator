@@ -98,8 +98,8 @@ export const Sidebar: React.FC = () => {
               <LoadingSkeleton variant="card" />
               <LoadingSkeleton variant="card" />
             </>
-          ) : (
-            repos?.map(repo => (
+          ) : Array.isArray(repos) ? (
+            repos.map(repo => (
               <RepoCard
                 key={repo.id}
                 repo={repo}
@@ -107,7 +107,7 @@ export const Sidebar: React.FC = () => {
                 onClick={() => setSelectedRepo(repo)}
               />
             ))
-          )}
+          ) : null}
         </div>
       </div>
 
