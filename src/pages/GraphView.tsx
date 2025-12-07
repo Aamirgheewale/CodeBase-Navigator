@@ -39,10 +39,14 @@ export const GraphView: React.FC = () => {
 
   const handleNodeClick = useCallback(async (node: any) => {
     if (node.type === 'file') {
-      setSelectedNode(node as GraphNode);
-      const file = await apiClient.getFile(node.repo, node.path);
-      setInspectorFile(file);
-      setHighlightedLines(null);
+      try {
+        setSelectedNode(node as GraphNode);
+        const file = await apiClient.getFile(node.repo, node.path);
+        setInspectorFile(file);
+        setHighlightedLines(null);
+      } catch (error) {
+        console.error('Error loading file:', error);
+      }
     }
   }, [setInspectorFile, setHighlightedLines, setSelectedNode]);
 
@@ -118,15 +122,27 @@ export const GraphView: React.FC = () => {
     return <LoadingSkeleton variant="graph" className="h-full" />;
   }
 
+  // Ensure graphData has the correct structure
+  if (!graphData || !Array.isArray(graphData.nodes) || !Array.isArray(graphData.links)) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <EmptyState
+          type="repo"
+          title="Graph data unavailable"
+          description="Unable to load graph data for this repository"
+        />
+      </div>
+    );
+  }
+
   return (
     <div ref={containerRef} className="h-full relative overflow-hidden bg-gradient-radial">
       {/* Graph */}
-      {graphData && (
-        <ForceGraph2D
-          ref={graphRef}
-          width={dimensions.width}
-          height={dimensions.height}
-          graphData={graphData}
+      <ForceGraph2D
+        ref={graphRef}
+        width={dimensions.width}
+        height={dimensions.height}
+        graphData={graphData}
           nodeCanvasObject={nodeCanvasObject}
           nodePointerAreaPaint={(node, color, ctx) => {
             const size = node.type === 'file' ? 8 : 10;
@@ -148,7 +164,6 @@ export const GraphView: React.FC = () => {
           d3AlphaDecay={0.02}
           d3VelocityDecay={0.3}
         />
-      )}
 
       {/* Controls */}
       <motion.div

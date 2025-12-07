@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { 
   Network, MessageSquare, RefreshCw, Sparkles, 
-  ChevronRight, Zap
+  ChevronRight
 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { apiClient } from '@/lib/api';
@@ -42,7 +42,7 @@ export const Sidebar: React.FC = () => {
             transition={{ duration: 4, repeat: Infinity }}
             className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center glow-primary"
           >
-            <Zap className="w-5 h-5 text-primary-foreground" />
+            <span className="text-xl font-bold text-primary-foreground">C</span>
           </motion.div>
           <div>
             <h1 className="font-bold text-lg">CodeNav</h1>

@@ -104,7 +104,7 @@ export const InspectorPanel: React.FC = () => {
         <AnimatePresence mode="wait">
           {inspectorFile ? (
             <motion.div
-              key="editor"
+              key={`editor-${inspectorFile.repo}-${inspectorFile.path}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -134,6 +134,7 @@ export const InspectorPanel: React.FC = () => {
               {/* Monaco Editor */}
               <div className="flex-1">
                 <Editor
+                  key={`${inspectorFile.repo}-${inspectorFile.path}`}
                   height="100%"
                   language={inspectorFile.language}
                   value={inspectorFile.content}

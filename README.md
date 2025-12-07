@@ -1,54 +1,45 @@
-# Welcome to your Lovable project
+# CodeNav - CodeBase Navigator
 
-## Project info
+## Project Info
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**Repository**: [https://github.com/Aamirgheewale/CodeBase-Navigator](https://github.com/Aamirgheewale/CodeBase-Navigator)
 
-## How can I edit this code?
+**Description**: Interactive codebase exploration and analysis tool with visual graph representations and AI-powered Q&A capabilities.
 
-There are several ways of editing your application.
+## Getting Started
 
-**Use Lovable**
+### Prerequisites
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- Node.js (v18 or higher) - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- npm or yarn package manager
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Step 1: Clone the repository
+git clone https://github.com/Aamirgheewale/CodeBase-Navigator.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Step 2: Navigate to the project directory
+cd CodeBase-Navigator
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Environment Variables
 
-**Use GitHub Codespaces**
+Create a `.env` file in the root directory for Gemini API integration (optional):
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```env
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+Get your API key from: https://makersuite.google.com/app/apikey
 
 ## What technologies are used for this project?
 
@@ -60,14 +51,27 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Building for Production
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+```sh
+# Build the project
+npm run build
 
-## Can I connect a custom domain to my Lovable project?
+# Preview the production build
+npm run preview
+```
 
-Yes, you can!
+## Features
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Graph Visualization**: Interactive force-directed graph of code structure
+- **AI-Powered Chat**: Ask questions about codebase with Gemini API integration
+- **Code Inspector**: View file contents with syntax highlighting
+- **Repository Management**: Support for multiple repositories
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Documentation
+
+For detailed documentation, see [about_project.md](./about_project.md)
+
+## License
+
+This project is open source and available for use.

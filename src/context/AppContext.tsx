@@ -14,10 +14,6 @@ interface AppState {
   setHighlightedLines: (lines: { start: number; end: number } | null) => void;
   selectedNode: GraphNode | null;
   setSelectedNode: (node: GraphNode | null) => void;
-  isPresentMode: boolean;
-  setIsPresentMode: (mode: boolean) => void;
-  demoStartTime: Date | null;
-  setDemoStartTime: (time: Date | null) => void;
 }
 
 const AppContext = createContext<AppState | undefined>(undefined);
@@ -28,8 +24,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [inspectorFile, setInspectorFile] = useState<FileContent | null>(null);
   const [highlightedLines, setHighlightedLines] = useState<{ start: number; end: number } | null>(null);
   const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
-  const [isPresentMode, setIsPresentMode] = useState(false);
-  const [demoStartTime, setDemoStartTime] = useState<Date | null>(null);
 
   return (
     <AppContext.Provider
@@ -44,10 +38,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         setHighlightedLines,
         selectedNode,
         setSelectedNode,
-        isPresentMode,
-        setIsPresentMode,
-        demoStartTime,
-        setDemoStartTime,
       }}
     >
       {children}
